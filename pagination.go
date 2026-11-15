@@ -15,6 +15,14 @@ type PaginationMeta struct {
 	HasPrevious bool  `json:"has_previous"`
 }
 
+// CursorPaginationMeta contains opaque cursors supplied by the caller.
+type CursorPaginationMeta struct {
+	NextCursor     string `json:"next_cursor,omitempty"`
+	PreviousCursor string `json:"previous_cursor,omitempty"`
+	HasNext        bool   `json:"has_next"`
+	HasPrevious    bool   `json:"has_previous"`
+}
+
 // NewPaginationMeta validates pagination inputs and calculates page metadata.
 func NewPaginationMeta(page, perPage int, totalItems int64) (PaginationMeta, error) {
 	if page < 1 {
